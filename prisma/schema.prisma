@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Link {
+  id          Int     @id @default(autoincrement())
+  title       String
+  url         String?
+  description String?
+  iconPath    String?
+  order       Int     @default(0)
+  isCopyable  Boolean @default(false)
+  isVisible   Boolean @default(true)
+}
+
