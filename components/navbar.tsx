@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function Navbar() {
   return (
@@ -13,10 +14,12 @@ export function Navbar() {
       <nav className="relative flex items-center justify-between px-5 py-3 rounded-full bg-zinc-900/50 backdrop-blur-md border border-zinc-800">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3">
-          <img
+          <Image
             src="/logo.png"
             alt="Mahirsn logo"
-            className="h-9 w-9 rounded-lg object-contain"
+            width={36}
+            height={36}
+            className="rounded-lg object-contain"
           />
           <span className="font-bold text-foreground text-lg tracking-tight">Mahirsn</span>
         </a>

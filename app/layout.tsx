@@ -11,8 +11,40 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Mahirsn",
+  metadataBase: new URL("https://mahirsn.net"),
+  title: {
+    default: "Mahirsn",
+    template: "%s | Mahirsn",
+  },
   description: "Mahirsn",
+  keywords: ["Mahirsn", "Portfolio", "Developer", "Web Development"],
+  authors: [{ name: "Mahirsn" }],
+  creator: "Mahirsn",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://mahirsn.net",
+    title: "Mahirsn",
+    description: "Personal website of Mahirsn.",
+    siteName: "Mahirsn",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mahirsn",
+    description: "Personal website of Mahirsn.",
+    creator: "@mahirsn",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

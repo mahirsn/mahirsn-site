@@ -12,6 +12,7 @@ import {
   Copy,
   Check,
 } from "lucide-react"
+import NextImage from "next/image"
 import { useToast } from "@/hooks/use-toast"
 
 export type LinkItem = {
@@ -95,12 +96,15 @@ function LinkCard({ link }: { link: LinkItem }) {
         {/* Icon */}
         <div className="flex items-center justify-center w-11 h-11 rounded-lg bg-zinc-800/80 border border-zinc-700/50 group-hover:border-neon/40 group-hover:bg-neon/10 transition-all duration-300 shrink-0">
           {link.iconPath ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={link.iconPath}
-              alt={link.title}
-              className="w-5 h-5 object-contain"
-            />
+            <div className="relative w-5 h-5">
+              <NextImage
+                src={link.iconPath}
+                alt={link.title}
+                fill
+                sizes="20px"
+                className="object-contain"
+              />
+            </div>
           ) : (
             <Icon
               className="w-5 h-5 text-muted-foreground group-hover:text-neon transition-colors duration-300"
