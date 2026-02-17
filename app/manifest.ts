@@ -21,11 +21,11 @@ export default function manifest(): MetadataRoute.Manifest {
                 sizes: "192x192",
                 type: "image/png",
             },
-            // {
-            //   src: "/icon-512x512.png",
-            //   sizes: "512x512",
-            //   type: "image/png",
-            // },
+            {
+                src: "/icon-1744x1744.png",
+                sizes: "1744x1744",
+                type: "image/png",
+            },
         ],
     };
 }
