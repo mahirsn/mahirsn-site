@@ -5,6 +5,8 @@ import { Hero } from "@/components/hero";
 import { LinkHub } from "@/components/link-hub";
 import { Footer } from "@/components/footer";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const links = await getPublicLinks();
 
@@ -17,7 +19,7 @@ export default async function Home() {
           links={links.map((link) => ({
             id: link.id,
             title: link.title,
-            url: link.url,
+            url: link.url ?? "",
             description: link.description ?? undefined,
             iconPath: link.iconPath ?? undefined,
             copy: link.isCopyable,

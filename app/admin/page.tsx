@@ -5,6 +5,8 @@ import { LinkAdminClient } from '@/components/link-admin-client'
 
 const ADMIN_COOKIE_NAME = 'admin-auth'
 
+export const dynamic = 'force-dynamic'
+
 export default async function AdminPage() {
   const cookieStore = await cookies()
   const isAuthed = cookieStore.get(ADMIN_COOKIE_NAME)?.value === '1'
@@ -54,6 +56,13 @@ export default async function AdminPage() {
 
   const links = await getAllLinks()
 
+  const initialLinks = links.map(l => ({
+    ...l,
+    url: l.url ?? "",
+    description: l.description ?? "",
+    iconPath: l.iconPath ?? ""
+  }))
+
   return (
     <>
       <form action={adminLogout} className="fixed top-4 right-4 z-50">
@@ -64,7 +73,7 @@ export default async function AdminPage() {
           Sign out
         </button>
       </form>
-      <LinkAdminClient initialLinks={links} />
+      <LinkAdminClient initialLinks={initialLinks} />
     </>
   )
 }

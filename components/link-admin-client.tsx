@@ -154,13 +154,25 @@ export function LinkAdminClient({ initialLinks }: LinkAdminClientProps) {
       try {
         if (isEditing) {
           const updated = await updateLink(formData)
+          const mappedUpdated = {
+            ...updated,
+            url: updated.url ?? "",
+            description: updated.description ?? "",
+            iconPath: updated.iconPath ?? ""
+          }
           setLinks((prev) =>
-            prev.map((link) => (link.id === updated.id ? updated : link)),
+            prev.map((link) => (link.id === mappedUpdated.id ? mappedUpdated : link)),
           )
           toast({ title: "Link updated" })
         } else {
           const created = await createLink(formData)
-          setLinks((prev) => [...prev, created].sort((a, b) => a.order - b.order))
+          const mappedCreated = {
+            ...created,
+            url: created.url ?? "",
+            description: created.description ?? "",
+            iconPath: created.iconPath ?? ""
+          }
+          setLinks((prev) => [...prev, mappedCreated].sort((a, b) => a.order - b.order))
           toast({ title: "Link created" })
         }
         resetForm()
